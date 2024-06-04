@@ -18,3 +18,108 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/index.php/site/home
 ---
+2024/06/04 09:51:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'yiiapp.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2024/06/04 10:34:22 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'yiiapp.city_id' doesn't exist. The SQL statement executed was: ALTER TABLE `city_id` ADD CONSTRAINT `users` FOREIGN KEY (`cities`) REFERENCES `id` (`NO ACTION`) ON DELETE NO ACTION.
+2024/06/04 10:34:22 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'yiiapp.city_id' doesn't exist. The SQL statement executed was: ALTER TABLE `city_id` ADD CONSTRAINT `users` FOREIGN KEY (`cities`) REFERENCES `id` (`NO ACTION`) ON DELETE NO ACTION in C:\Users\Amalia\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\Users\Amalia\yii\framework\db\CDbCommand.php(1463): CDbCommand->execute()
+#1 C:\Users\Amalia\yii\framework\db\CDbMigration.php(366): CDbCommand->addForeignKey('users', 'city_id', 'cities', 'id', 'NO ACTION', 'NO ACTION', NULL)
+#2 C:\Users\Amalia\yiiapp\protected\migrations\m240604_080557_users_table.php(16): CDbMigration->addForeignKey('users', 'city_id', 'cities', 'id', 'NO ACTION', 'NO ACTION')
+#3 C:\Users\Amalia\yii\framework\cli\commands\MigrateCommand.php(415): m240604_080557_users_table->up()
+#4 C:\Users\Amalia\yii\framework\cli\commands\MigrateCommand.php(109): MigrateCommand->migrateUp('m240604_080557_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Users\Amalia\yii\framework\console\CConsoleCommand.php(177): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Users\Amalia\yii\framework\console\CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#8 C:\Users\Amalia\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Users\Amalia\yii\framework\base\CApplication.php(185): CConsoleApplication->processRequest()
+#10 C:\Users\Amalia\yii\framework\yiic.php(33): CApplication->run()
+#11 C:\Users\Amalia\yiiapp\protected\yiic.php(7): require_once('C:\\Users\\Amalia...')
+#12 C:\Users\Amalia\yiiapp\protected\yiic(4): require_once('C:\\Users\\Amalia...')
+#13 {main}
+---
+2024/06/04 10:39:44 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'users' already exists. The SQL statement executed was: CREATE TABLE `users` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`fist_name` varchar(255),
+	`last_name` varchar(255),
+	`city_id` int,
+	`category_id` int,
+	`created_at` datetime
+).
+2024/06/04 10:39:44 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'users' already exists. The SQL statement executed was: CREATE TABLE `users` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`fist_name` varchar(255),
+	`last_name` varchar(255),
+	`city_id` int,
+	`category_id` int,
+	`created_at` datetime
+) in C:\Users\Amalia\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\Users\Amalia\yii\framework\db\CDbCommand.php(1352): CDbCommand->execute()
+#1 C:\Users\Amalia\yii\framework\db\CDbMigration.php(250): CDbCommand->createTable('users', Array, NULL)
+#2 C:\Users\Amalia\yiiapp\protected\migrations\m240604_080557_users_table.php(7): CDbMigration->createTable('users', Array)
+#3 C:\Users\Amalia\yii\framework\cli\commands\MigrateCommand.php(415): m240604_080557_users_table->up()
+#4 C:\Users\Amalia\yii\framework\cli\commands\MigrateCommand.php(109): MigrateCommand->migrateUp('m240604_080557_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Users\Amalia\yii\framework\console\CConsoleCommand.php(177): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Users\Amalia\yii\framework\console\CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#8 C:\Users\Amalia\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Users\Amalia\yii\framework\base\CApplication.php(185): CConsoleApplication->processRequest()
+#10 C:\Users\Amalia\yii\framework\yiic.php(33): CApplication->run()
+#11 C:\Users\Amalia\yiiapp\protected\yiic.php(7): require_once('C:\\Users\\Amalia...')
+#12 C:\Users\Amalia\yiiapp\protected\yiic(4): require_once('C:\\Users\\Amalia...')
+#13 {main}
+---
+2024/06/04 10:43:14 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'first_name' in 'field list'. The SQL statement executed was: INSERT INTO `cities` (`id`, `first_name`, `last_name`, `city_id`, `category_id`) VALUES (:id, :first_name, :last_name, :city_id, :category_id).
+2024/06/04 10:43:14 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'first_name' in 'field list'. The SQL statement executed was: INSERT INTO `cities` (`id`, `first_name`, `last_name`, `city_id`, `category_id`) VALUES (:id, :first_name, :last_name, :city_id, :category_id) in C:\Users\Amalia\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\Users\Amalia\yii\framework\db\CDbCommand.php(1278): CDbCommand->execute(Array)
+#1 C:\Users\Amalia\yii\framework\db\CDbMigration.php(178): CDbCommand->insert('cities', Array)
+#2 C:\Users\Amalia\yiiapp\protected\migrations\m240604_080557_users_table.php(21): CDbMigration->insert('cities', Array)
+#3 C:\Users\Amalia\yii\framework\cli\commands\MigrateCommand.php(415): m240604_080557_users_table->up()
+#4 C:\Users\Amalia\yii\framework\cli\commands\MigrateCommand.php(109): MigrateCommand->migrateUp('m240604_080557_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Users\Amalia\yii\framework\console\CConsoleCommand.php(177): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Users\Amalia\yii\framework\console\CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#8 C:\Users\Amalia\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Users\Amalia\yii\framework\base\CApplication.php(185): CConsoleApplication->processRequest()
+#10 C:\Users\Amalia\yii\framework\yiic.php(33): CApplication->run()
+#11 C:\Users\Amalia\yiiapp\protected\yiic.php(7): require_once('C:\\Users\\Amalia...')
+#12 C:\Users\Amalia\yiiapp\protected\yiic(4): require_once('C:\\Users\\Amalia...')
+#13 {main}
+---
+2024/06/04 10:44:47 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'first_name' in 'field list'. The SQL statement executed was: INSERT INTO `users` (`id`, `first_name`, `last_name`, `city_id`, `category_id`) VALUES (:id, :first_name, :last_name, :city_id, :category_id).
+2024/06/04 10:44:47 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'first_name' in 'field list'. The SQL statement executed was: INSERT INTO `users` (`id`, `first_name`, `last_name`, `city_id`, `category_id`) VALUES (:id, :first_name, :last_name, :city_id, :category_id) in C:\Users\Amalia\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\Users\Amalia\yii\framework\db\CDbCommand.php(1278): CDbCommand->execute(Array)
+#1 C:\Users\Amalia\yii\framework\db\CDbMigration.php(178): CDbCommand->insert('users', Array)
+#2 C:\Users\Amalia\yiiapp\protected\migrations\m240604_080557_users_table.php(21): CDbMigration->insert('users', Array)
+#3 C:\Users\Amalia\yii\framework\cli\commands\MigrateCommand.php(415): m240604_080557_users_table->up()
+#4 C:\Users\Amalia\yii\framework\cli\commands\MigrateCommand.php(109): MigrateCommand->migrateUp('m240604_080557_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Users\Amalia\yii\framework\console\CConsoleCommand.php(177): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Users\Amalia\yii\framework\console\CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#8 C:\Users\Amalia\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Users\Amalia\yii\framework\base\CApplication.php(185): CConsoleApplication->processRequest()
+#10 C:\Users\Amalia\yii\framework\yiic.php(33): CApplication->run()
+#11 C:\Users\Amalia\yiiapp\protected\yiic.php(7): require_once('C:\\Users\\Amalia...')
+#12 C:\Users\Amalia\yiiapp\protected\yiic(4): require_once('C:\\Users\\Amalia...')
+#13 {main}
+---
+2024/06/04 10:47:00 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'first_name' in 'field list'. The SQL statement executed was: INSERT INTO `users` (`id`, `first_name`, `last_name`, `city_id`, `category_id`) VALUES (:id, :first_name, :last_name, :city_id, :category_id).
+2024/06/04 10:47:00 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'first_name' in 'field list'. The SQL statement executed was: INSERT INTO `users` (`id`, `first_name`, `last_name`, `city_id`, `category_id`) VALUES (:id, :first_name, :last_name, :city_id, :category_id) in C:\Users\Amalia\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\Users\Amalia\yii\framework\db\CDbCommand.php(1278): CDbCommand->execute(Array)
+#1 C:\Users\Amalia\yii\framework\db\CDbMigration.php(178): CDbCommand->insert('users', Array)
+#2 C:\Users\Amalia\yiiapp\protected\migrations\m240604_080557_users_table.php(21): CDbMigration->insert('users', Array)
+#3 C:\Users\Amalia\yii\framework\cli\commands\MigrateCommand.php(415): m240604_080557_users_table->up()
+#4 C:\Users\Amalia\yii\framework\cli\commands\MigrateCommand.php(109): MigrateCommand->migrateUp('m240604_080557_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Users\Amalia\yii\framework\console\CConsoleCommand.php(177): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Users\Amalia\yii\framework\console\CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#8 C:\Users\Amalia\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Users\Amalia\yii\framework\base\CApplication.php(185): CConsoleApplication->processRequest()
+#10 C:\Users\Amalia\yii\framework\yiic.php(33): CApplication->run()
+#11 C:\Users\Amalia\yiiapp\protected\yiic.php(7): require_once('C:\\Users\\Amalia...')
+#12 C:\Users\Amalia\yiiapp\protected\yiic(4): require_once('C:\\Users\\Amalia...')
+#13 {main}
+---
