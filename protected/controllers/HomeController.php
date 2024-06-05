@@ -3,13 +3,15 @@
 class HomeController extends Controller
 {
 	
-    public function actionIndex()
+    public function actionMenu()
     {
-        echo "this is home";
+
+    //    echo " this is menu";
+    //     $this->layout = 'menu';
+
+	// 	$emails = ['test@gmail.com','johndoe@gmail.com'];
+
+        $this->render('//layouts/home/menu');
     }
 
-    public function actionFeatures()
-    {
-        echo "this is the features page";
-    }
 }

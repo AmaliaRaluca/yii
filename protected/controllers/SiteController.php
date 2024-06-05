@@ -106,19 +106,4 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
-
-	public function actionHelloWorld()
-	{
-		echo "Hello World!";
-	}
-
-	public function actionHelp()
-	{
-		echo "Help!";
-	}
-
-	public function actionFaq()
-	{
-		echo "This is a FAQ!";
-	}
 }
