@@ -3,6 +3,10 @@
 
 class User extends CActiveRecord
 {
+    
+    public $city_search;
+    public $category_search;
+
     public function tableName()
     {
         return 'users';
@@ -14,8 +18,10 @@ class User extends CActiveRecord
             array('first_name', 'length', 'max' => 255),
             array('last_name', 'length', 'max' => 255),
             array('city_id, category_id', 'numerical', 'integerOnly'=>true),
-            // date format: yyyy-mm-dd hh:mm:ss
-            // array('created_at', 'datetime') 
+            // date format: yyyy-mm-dd
+            // array('created_at', 'date') 
+            array('id, first_name, last_name, city_search, category_search, created_at', 'safe', 'on'=>'search'),
+
         );
 
     }
@@ -26,12 +32,22 @@ class User extends CActiveRecord
           'id' => 'ID',
           'first_name' => 'First Name',
           'last_name' => 'Last Name',
+          'full_name' => 'Full Name',
           'city_id' => 'City Name',
-          'category_id' => 'Category',
-          'created_at' => 'Date'
+          'category_id' => 'Driver Category',
+          'city_search' => 'City name',
+          'category_search' => 'Driver category',
+          'created_at' => 'Created at timestamp'
         );
 
     }
+
+    public function getFullName(){
+
+        return $this->first_name . ' ' . $this->last_name;
+
+    }
+
 
     public function relations()
     {
@@ -61,15 +77,30 @@ class User extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+        $criteria->with = array('city', 'category');
+
         $criteria->compare('id',$this->id);
         $criteria->compare('first_name',$this->first_name,true);
         $criteria->compare('last_name',$this->last_name,true);
-        $criteria->compare('city_id',$this->city_id);
-        $criteria->compare('category_id',$this->category_id);
+        $criteria->compare('city.city_name',$this->city_search, true);
+        $criteria->compare('category.category_type',$this->category_search, true);
         $criteria->compare('created_at',$this->created_at,true);
 
         return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'sort'=>array(
+                'attributes'=>array(
+                    'city_search'=>array(
+                        'asc'=>'city.city_name',
+                        'desc'=>'city.city_name DESC',
+                    ),
+                    'category_search'=>array(
+                        'asc'=>'category.category_type',
+                        'desc'=>'category.category_type DESC',
+                    ),
+                    '*',
+                ),
+            ),
 		));
 	}
 

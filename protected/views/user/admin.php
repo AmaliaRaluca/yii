@@ -20,7 +20,7 @@ $('.search-button').click(function(){
 $('.search-form form').submit(function(){
 	$('#user-grid').yiiGridView('update', {
 		data: $(this).serialize()
-	});
+	})
 	return false;
 });
 ");
@@ -35,12 +35,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
+<?php
+	$this->renderPartial('_search',array(
+	'model'=>$model
 )); ?>
+
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -48,8 +51,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'id',
 		'first_name',
 		'last_name',
-		'city_id',
-		'category_id',
+		array( 'name'=>'city_search', 'value'=> function($data) {
+				echo $data->city? $data->city->city_name : ' - ';
+		}),
+		array( 'name'=>'category_search', 'value'=> function($data) {
+				echo  $data->category? $data->category->category_type : ' -';
+		}),
 		'created_at',
 		array(
 			'class'=>'CButtonColumn',

@@ -24,8 +24,8 @@ $this->menu=array(
 		'id',
 		'first_name',
 		'last_name',
-		'city_id',
-		'category_id',
+		'city.city_name',
+		'category.category_type',
 		'created_at',
 	),
 )); ?>

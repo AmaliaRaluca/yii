@@ -22,6 +22,6 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'driver_categories',
+		'category_type',
 	),
 )); ?>
