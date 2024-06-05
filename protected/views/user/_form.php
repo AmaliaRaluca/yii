@@ -52,21 +52,18 @@
 		<?php 
 		// TO DO - work in progress
 		// Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
-		// $this->widget('zii.widgets.jui.CJulDatePicker',
-		// 	array(
-		// 		'attribute' => 'created_at',
-		// 		'name' => 'created_at',
-		// 		'value' => $model->created_at,
-		// 		'model' => $model,
-		// 		'options'=> array(
-		// 			'showAnim' => 'slide',
-		// 			'showButtonPanel' => true,
-		// 			'dateFormat'=>'yy-m-d'
-		// 		),
-		// 		'htmlOptions'=>array('style' => '')
-		// 	)); 
+		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+				'attribute' => 'created_at',
+				'name' => 'created_at',
+				'value' => $model->created_at,
+				'model' => $model,
+				'options'=> array(
+					'showAnim' => 'slide',
+					'showButtonPanel' => true,
+					'dateFormat'=>'yy-mm-dd'
+				)
+			)); 
 		?>
-        <?php echo $form->textField($model,'created_at'); ?>
 		<?php echo $form->error($model,'created_at'); ?>
 	</div>
 

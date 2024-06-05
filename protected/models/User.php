@@ -17,9 +17,9 @@ class User extends CActiveRecord
         return array(
             array('first_name', 'length', 'max' => 255),
             array('last_name', 'length', 'max' => 255),
+            array('first_name, last_name', 'required'),
             array('city_id, category_id', 'numerical', 'integerOnly'=>true),
-            // date format: yyyy-mm-dd
-            // array('created_at', 'date') 
+            array('created_at', 'length', 'max' => 50),
             array('id, first_name, last_name, city_search, category_search, created_at', 'safe', 'on'=>'search'),
 
         );
@@ -88,7 +88,7 @@ class User extends CActiveRecord
 
         return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-            'sort'=>array(
+            'sort'=> array(
                 'attributes'=>array(
                     'city_search'=>array(
                         'asc'=>'city.city_name',
@@ -100,6 +100,7 @@ class User extends CActiveRecord
                     ),
                     '*',
                 ),
+                'defaultOrder'=>'created_at ASC',
             ),
 		));
 	}
