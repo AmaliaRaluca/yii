@@ -6,6 +6,7 @@ class User extends CActiveRecord
     
     public $city_search;
     public $category_search;
+    public $distance_from_bucharest;
 
     public function tableName()
     {
@@ -37,6 +38,7 @@ class User extends CActiveRecord
           'category_id' => 'Driver Category',
           'city_search' => 'City name',
           'category_search' => 'Driver category',
+          'distance_from_bucharest' => 'Distance',
           'created_at' => 'Created at timestamp'
         );
 
@@ -74,8 +76,6 @@ class User extends CActiveRecord
 	 */
 	public function search()
 	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
-
 		$criteria=new CDbCriteria;
         $criteria->with = array('city', 'category');
 

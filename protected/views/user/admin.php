@@ -23,6 +23,14 @@ $('.search-form form').submit(function(){
 	})
 	return false;
 });
+$('.filter-button').click(function() {
+	filterVal = $('#User_distance_from_bucharest').val();
+	if (!Number(filterVal)) {
+       // distance input is not a number
+	     $('#distance-error').text('Distance must be number.');
+		return false;
+	}
+ });
 ");
 ?>
 
@@ -52,15 +60,19 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		'first_name',
 		'last_name',
 		array( 'name'=>'city_search', 'value'=> function($data) {
+			$city_name = '';
 
-				$city_name = $data->city? $data->city->city_name : '';
-				
+			if ($data->city) {
+
+				 $city_name = $data->city->city_name;
+			 
 				//Probably there is a much more elegant solution using CDetailView? ...this is yet to be discovered 
 				if ($data->city->distance_from_bucharest >= 250) {
 					echo '<span style="color:red">'. $city_name . '</span>';
 				} else{
 					echo '<span style="color:green">'. $city_name . '</span>';
 				}
+			}
 		}),
 		array( 'name'=>'category_search', 'value'=> function($data) {
 				echo  $data->category? $data->category->category_type : ' -';
@@ -71,3 +83,13 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		),
 	),
 )); ?>
+
+<div class="filter-form" style="display:inline">
+
+<?php
+	$this->renderPartial('_filter',array(
+	'model'=>$model
+)); ?>
+
+</div><!-- filter-form -->
+

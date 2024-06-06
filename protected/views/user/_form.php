@@ -50,8 +50,6 @@
 	<div class="row">
 		<?php echo $form->labelEx($model,'created_at'); ?>
 		<?php 
-		// TO DO - work in progress
-		// Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
 		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
 				'attribute' => 'created_at',
 				'name' => 'created_at',

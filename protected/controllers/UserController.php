@@ -28,7 +28,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'filterajax'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -172,4 +172,27 @@ class UserController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+
+	 public function actionfilterAjax() 
+	 {
+	    // var_dump($_GET['input']);
+
+		$input = '800';
+
+		$users = User::model()->with('city')->findAll();
+		$results = array();
+
+		foreach ($users as $user) {
+			if ($user->city) { 
+
+				$city = $user->city;
+				if ($city->distance_from_bucharest < $input) {
+					array_push($results, $user);
+				}
+			}
+		}
+		
+		// $this->renderPartial('_filter', $results, false, true);
+	 }
 }
