@@ -11,7 +11,7 @@ https://docs.google.com/document/d/1ITRlrhpKCZLC0rXDQkbtk56B21hLXLwzrUmemsOVs6w/
 
  - download Yii version 1.x (I used 1.1.29);
  - once you have downloaded the application you can run the command to install a new app: 
-   ROUTE TO PROJECT FOLDER FRAMEWOK> php yiic webapp DOCUMENTS\yiiapp
+   ROUTE TO PROJECT FOLDER FRAMEWORK> php yiic webapp DOCUMENTS\yiiapp
  
   * in my case: C:\Users\Amalia\yii\framework> php yiic webapp C:\Users\Amalia\yiiapp)
   
@@ -31,5 +31,10 @@ https://docs.google.com/document/d/1ITRlrhpKCZLC0rXDQkbtk56B21hLXLwzrUmemsOVs6w/
 	
   - finally, head to your browser at http://dev.yiiapp.com and you should/see your welcome page.
 
-Git clone this repository and browse to http://dev.yiiapp.com/index.php/user/admin page to login.
+Git clone this repository and browse to http://dev.yiiapp.com/index.php/site/login page to login.
+
+ *main pages: 
+    - http://dev.yiiapp.com/index.php/drivercategory/admin
+    - http://dev.yiiapp.com/index.php/city/admin
+    - http://dev.yiiapp.com/index.php/user/admin
 Thank you!
