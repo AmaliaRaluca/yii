@@ -31,6 +31,19 @@ $('.filter-button').click(function() {
 		return false;
 	}
  });
+
+ var countChecked = function() {
+  var n = $( 'tbody input:checked' ).length;
+  if (n > 0) {
+  	$('.dynamic-text-checkbox').text( n + (n === 1 ? ' checkbox ' :  ' checkboxes ') + 'checked');
+  } else {
+    $('.dynamic-text-checkbox').text('');
+  }
+};
+
+$( 'tbody input[type=checkbox]').on( 'click', countChecked );
+
+countChecked(); 
 ");
 ?>
 
@@ -51,11 +64,17 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php
+
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+	'dataProvider'=> $model->search(),
+	'filter'=> $model,
 	'columns'=>array(
+		array(
+            'id' => 'id',
+            'class' => 'CCheckBoxColumn',
+			'selectableRows' => 'multiple'
+        ),
 		'id',
 		'first_name',
 		'last_name',
@@ -92,4 +111,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 )); ?>
 
 </div><!-- filter-form -->
+
+<div class="row dynamic-text-checkbox"></div>
 

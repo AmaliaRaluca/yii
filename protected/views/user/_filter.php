@@ -25,6 +25,9 @@
 	<?php echo CHtml::ajaxSubmitButton('Filter',UserController::createUrl('user/filterAjax'), array('input' => $model->distance_from_bucharest)); ?>
 </div>
 
+
+
+
 <?php $this->endWidget(); ?>
 
 </div><!-- filter-form -->
