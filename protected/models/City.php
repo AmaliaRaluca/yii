@@ -17,8 +17,9 @@ class City  extends CActiveRecord
         return array(
 			 array('city_name', 'length', 'max' => 255),
             array('city_name', 'unique'),
-            // array('distance_from_bucharest', 'numerical')
-			array('distance_from_bucharest', 'length','max'=>10)
+			array('city_name', 'required'),
+			array('distance_from_bucharest', 'length','max' => 10),
+			array('distance_from_bucharest', 'numerical', 'integerOnly' => true)
         );
     }
     
