@@ -1,0 +1,53 @@
+2024/06/08 20:58:02 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "contact". in C:\Users\Amalia\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\Users\Amalia\yii\framework\web\CController.php(270): CController->missingAction('contact')
+#1 C:\Users\Amalia\yii\framework\web\CWebApplication.php(282): CController->run('contact')
+#2 C:\Users\Amalia\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/contact')
+#3 C:\Users\Amalia\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\Users\Amalia\yiiapp\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/contact
+HTTP_REFERER=http://dev.yiiapp.com/index.php/
+---
+2024/06/08 21:00:28 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "user". in C:\Users\Amalia\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\Users\Amalia\yii\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\Users\Amalia\yii\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\Users\Amalia\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/user')
+#3 C:\Users\Amalia\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\Users\Amalia\yiiapp\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/user?view=user
+HTTP_REFERER=http://dev.yiiapp.com/index.php/site/
+---
+2024/06/08 21:00:47 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "user". in C:\Users\Amalia\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\Users\Amalia\yii\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\Users\Amalia\yii\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\Users\Amalia\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/user')
+#3 C:\Users\Amalia\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\Users\Amalia\yiiapp\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/user
+HTTP_REFERER=http://dev.yiiapp.com/index.php/site/
+---
+2024/06/08 21:00:53 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "user". in C:\Users\Amalia\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\Users\Amalia\yii\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\Users\Amalia\yii\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\Users\Amalia\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/user/admin')
+#3 C:\Users\Amalia\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\Users\Amalia\yiiapp\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/user/admin
+---
+2024/06/08 21:00:55 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "user". in C:\Users\Amalia\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\Users\Amalia\yii\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\Users\Amalia\yii\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\Users\Amalia\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/user/admin')
+#3 C:\Users\Amalia\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\Users\Amalia\yiiapp\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/user/admin
+---
