@@ -32,16 +32,41 @@ $('.filter-button').click(function() {
 	}
  });
 
- var countChecked = function() {
-  var n = $( 'tbody input:checked' ).length;
-  if (n > 0) {
-  	$('.dynamic-text-checkbox').text( n + (n === 1 ? ' checkbox ' :  ' checkboxes ') + 'checked');
-  } else {
-    $('.dynamic-text-checkbox').text('');
-  }
+ var countChecked = function(event) {
+    var checked = $('input:checked').length;
+	var numberOfCheckboxes = $( 'input[type=checkbox]').length;
+	
+	 $('.dynamic-text-checkbox').text('');
+
+	 if (checked > 0) {
+
+	 	//click ok select all checkbox 
+		if (event.target.id == 'id_all') 
+		{
+		  
+			if (numberOfCheckboxes == checked + 1) {
+				$('.dynamic-text-checkbox').text( numberOfCheckboxes - 2 +  ' checkboxes checked');	
+			} else {
+				$('.dynamic-text-checkbox').text( numberOfCheckboxes - 1 +  ' checkboxes checked');
+			}
+
+		} else {
+            // count for individual checkbox
+			if ($('input:checked').attr('id') == 'id_all') {
+				$('.dynamic-text-checkbox').text( checked -1 + ' checkboxes checked');
+			} else {
+			 	$('.dynamic-text-checkbox').text( checked + (checked === 1 ? ' checkbox ' :  ' checkboxes ') + 'checked');
+			}
+     	}
+
+		//click on deselect all 
+		if (event.target.id == 'id_all' && numberOfCheckboxes == checked + 1) {
+			$('.dynamic-text-checkbox').text('');
+		}
+	}
 };
 
-$( 'tbody input[type=checkbox]').on( 'click', countChecked );
+$( 'input[type=checkbox]').on( 'click', countChecked );
 
 countChecked(); 
 ");
