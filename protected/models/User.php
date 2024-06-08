@@ -6,7 +6,7 @@ class User extends CActiveRecord
     
     public $city_search;
     public $category_search;
-    public $distance_from_bucharest;
+    public $km;
 
     public function tableName()
     {
@@ -76,14 +76,20 @@ class User extends CActiveRecord
 	 */
 	public function search()
 	{
+
 		$criteria=new CDbCriteria;
         $criteria->with = array('city', 'category');
-
+        
         $criteria->compare('id',$this->id);
         $criteria->compare('first_name',$this->first_name,true);
         $criteria->compare('last_name',$this->last_name,true);
         $criteria->compare('city.city_name',$this->city_search, true);
         $criteria->compare('category.category_type',$this->category_search, true);
+
+        if (isset($_GET['User']['km'])) {
+            $criteria->condition='city.distance_from_bucharest < '. $_GET['User']['km'];
+        }
+
         $criteria->compare('created_at',$this->created_at,true);
 
         return new CActiveDataProvider($this, array(

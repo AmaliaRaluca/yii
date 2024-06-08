@@ -24,7 +24,7 @@ $('.search-form form').submit(function(){
 	return false;
 });
 $('.filter-button').click(function() {
-	filterVal = $('#User_distance_from_bucharest').val();
+	filterVal = $('#User_km').val();
 	if (!Number(filterVal)) {
        // distance input is not a number
 	     $('#distance-error').text('Distance must be number.');
